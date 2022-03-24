@@ -17,6 +17,15 @@ public class Metrics : MonoBehaviour
     public void SetHealthScore(int increment)
     {
         healthScore = (healthScore += increment)/100;
+
+        if (healthScore > 100)
+        {
+            healthScore = 100;
+        }
+        else if (healthScore < 0)
+        {
+            healthScore = 0;
+        }
     }
 
     public int GetHappyScore()
@@ -27,6 +36,15 @@ public class Metrics : MonoBehaviour
     public void SetHappyScore(int increment)
     {
         happyScore = (happyScore += increment) / 100;
+
+        if (happyScore > 100)
+        {
+            happyScore = 100;
+        }
+        else if (happyScore < 0)
+        {
+            happyScore = 0;
+        }
     }
 
     public int GetHungerScore()
@@ -36,7 +54,15 @@ public class Metrics : MonoBehaviour
 
     public void SetHungerScore(int increment)
     {
-        hungerScore = (hungerScore += increment) / 100;
+        hungerScore += increment;
+
+        if (hungerScore > 100)
+        {
+            hungerScore = 100;
+        } else if (hungerScore < 0)
+        {
+            hungerScore = 0;
+        }
     }
 
     public int GetMaxMetric()

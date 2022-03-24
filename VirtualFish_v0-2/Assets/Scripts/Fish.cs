@@ -33,18 +33,21 @@ public class Fish : MonoBehaviour
     void Start()
     {
         InitializeStatusBars();
+        InvokeRepeating("UpdateHungerValue", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthScoreText.text = "Health: " + metrics.GetHealthScore(); //+ "%";
-        happyScoreText.text = "Happy: " + metrics.GetHappyScore();
-        hungerScoreText.text = "Hunger: " + metrics.GetHungerScore();
+        UpdateMetricText();
 
-        ageText.text = "" + timer.GetAge();
+        
+        //if(Mathf.RoundToInt(timer.GetTimePassed()) % 1 == 0)
+        //{
+        //    Debug.Log("Time Passed: " + Mathf.RoundToInt(timer.GetTimePassed()));  // TEST
+        //}
 
-        timerImage.fillAmount = timer.fillFraction;
+        UpdateStatusBars();
     }
 
     void InitializeStatusBars()
@@ -56,6 +59,38 @@ public class Fish : MonoBehaviour
         happyBar.value = metrics.GetHappyScore();
 
         hungerBar.maxValue = metrics.GetMaxMetric();
+        hungerBar.value = metrics.GetHungerScore();
+    }
+
+    void UpdateMetricText()
+    {
+        healthScoreText.text = "Health: " + metrics.GetHealthScore(); //+ "%";
+        happyScoreText.text = "Happy: " + metrics.GetHappyScore();
+        hungerScoreText.text = "Hunger: " + metrics.GetHungerScore();
+
+        ageText.text = "" + timer.GetAge();
+
+        timerImage.fillAmount = timer.fillFraction;
+    }
+
+    void UpdateHungerValue()
+    {
+        if(metrics.GetHungerScore() > 0)
+        {
+            metrics.SetHungerScore(-1);
+        }
+        
+    }
+
+    void UpdateStatusBars()
+    {
+        //healthBar.maxValue = metrics.GetMaxMetric();
+        healthBar.value = metrics.GetHealthScore();
+
+        //happyBar.maxValue = metrics.GetMaxMetric();
+        happyBar.value = metrics.GetHappyScore();
+
+        //hungerBar.maxValue = metrics.GetMaxMetric();
         hungerBar.value = metrics.GetHungerScore();
     }
 }

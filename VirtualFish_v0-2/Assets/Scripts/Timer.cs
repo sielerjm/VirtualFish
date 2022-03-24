@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 
     int age = 0;
     public float fillFraction;
-    [SerializeField] float timePassed = 55f;
+    [SerializeField] float timePassed = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class Timer : MonoBehaviour
         if(Mathf.RoundToInt(timePassed % 60) == 0)
         {
             SetAge(Mathf.RoundToInt(timePassed / 60));
+            
         }
         
     }
@@ -37,7 +38,7 @@ public class Timer : MonoBehaviour
 
     public float GetTimePassed()
     {
-        return timePassed;
+        return Mathf.RoundToInt(timePassed);
     }
 
     public void SetAge(int value)
