@@ -6,36 +6,26 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     Fish fish;
-    Food food;
-    Care care;
-    Play play;
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    quiz.gameObject.SetActive(true);
-    //    endScreen.gameObject.SetActive(false);
-    //}
+    // Start is called before the first frame update
+    void Start()
+    {
+        fish.gameObject.SetActive(true);
+    }
 
-    //private void Awake()
-    //{
-    //    quiz = FindObjectOfType<Quiz>();
-    //    endScreen = FindObjectOfType<EndScreen>();
-    //}
+    private void Awake()
+    {
+        fish = FindObjectOfType<Fish>();
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (quiz.isComplete)
-    //    {
-    //        quiz.gameObject.SetActive(false);
-    //        endScreen.gameObject.SetActive(true);
-    //        endScreen.ShowFinalScore();
-    //    }
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
-    //public void OnReplayLevel()
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //}
+    public void OnReplayLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

@@ -35,6 +35,7 @@ public class Fish : MonoBehaviour
         InitializeStatusBars();
         InvokeRepeating("UpdateHungerValue", 1.0f, 1.0f);
         InvokeRepeating("UpdateHappyValue", 1.0f, 1.0f);
+
     }
 
     // Update is called once per frame
@@ -103,4 +104,5 @@ public class Fish : MonoBehaviour
         //hungerBar.maxValue = metrics.GetMaxMetric();
         hungerBar.value = metrics.GetHungerScore();
     }
+
 }
