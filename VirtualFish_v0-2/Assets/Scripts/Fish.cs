@@ -34,6 +34,7 @@ public class Fish : MonoBehaviour
     {
         InitializeStatusBars();
         InvokeRepeating("UpdateHungerValue", 1.0f, 1.0f);
+        InvokeRepeating("UpdateHappyValue", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -64,9 +65,9 @@ public class Fish : MonoBehaviour
 
     void UpdateMetricText()
     {
-        healthScoreText.text = "Health: " + metrics.GetHealthScore(); //+ "%";
-        happyScoreText.text = "Happy: " + metrics.GetHappyScore();
-        hungerScoreText.text = "Hunger: " + metrics.GetHungerScore();
+        healthScoreText.text = "Health: " + Mathf.RoundToInt(metrics.GetHealthScore()); //+ "%";
+        happyScoreText.text = "Happy: " + Mathf.RoundToInt(metrics.GetHappyScore());
+        hungerScoreText.text = "Hunger: " + Mathf.RoundToInt(metrics.GetHungerScore());
 
         ageText.text = "" + timer.GetAge();
 
@@ -77,9 +78,18 @@ public class Fish : MonoBehaviour
     {
         if(metrics.GetHungerScore() > 0)
         {
-            metrics.SetHungerScore(-1);
+            metrics.SetHungerScore((float)-0.5f);
         }
         
+    }
+
+    void UpdateHappyValue()
+    {
+        if (metrics.GetHappyScore() > 0)
+        {
+            metrics.SetHappyScore((float)-0.25f);
+        }
+
     }
 
     void UpdateStatusBars()

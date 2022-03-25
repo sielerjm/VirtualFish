@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Metrics : MonoBehaviour
 {
-    int healthScore = 100;
-    int happyScore = 100;
-    int hungerScore = 100;
-    int maxMetric = 100;
+    float healthScore = 100;
+    float happyScore = 100;
+    float hungerScore = 100;
+    float maxMetric = 100;
 
-    public int GetHealthScore()
+    public float GetHealthScore()
     {
         return healthScore;
     }
 
-    public void SetHealthScore(int increment)
+    public void SetHealthScore(float increment)
     {
-        healthScore = (healthScore += increment)/100;
+        healthScore += increment;
 
         if (healthScore > 100)
         {
@@ -28,14 +28,14 @@ public class Metrics : MonoBehaviour
         }
     }
 
-    public int GetHappyScore()
+    public float GetHappyScore()
     {
         return happyScore;
     }
 
-    public void SetHappyScore(int increment)
+    public void SetHappyScore(float increment)
     {
-        happyScore = (happyScore += increment) / 100;
+        happyScore += increment;
 
         if (happyScore > 100)
         {
@@ -47,12 +47,12 @@ public class Metrics : MonoBehaviour
         }
     }
 
-    public int GetHungerScore()
+    public float GetHungerScore()
     {
         return hungerScore;
     }
 
-    public void SetHungerScore(int increment)
+    public void SetHungerScore(float increment)
     {
         hungerScore += increment;
 
@@ -65,7 +65,7 @@ public class Metrics : MonoBehaviour
         }
     }
 
-    public int GetMaxMetric()
+    public float GetMaxMetric()
     {
         return maxMetric;
     }
