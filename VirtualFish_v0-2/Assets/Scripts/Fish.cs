@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class Fish : MonoBehaviour
 {
     [Header("Metrics")]
@@ -23,10 +22,19 @@ public class Fish : MonoBehaviour
     [SerializeField] Slider happyBar;
     [SerializeField] Slider hungerBar;
 
+    [Header("Backgrounds")]
+    Backgrounds backgrounds;
+
+    [Header("Parasites")]
+    [SerializeField] bool parasitesPresent = false;
+    [SerializeField] Canvas parasites;
+
     private void Awake()
     {
         timer = FindObjectOfType<Timer>();
         metrics = FindObjectOfType<Metrics>();
+        backgrounds = FindObjectOfType<Backgrounds>();
+        
     }
 
     // Start is called before the first frame update
@@ -35,20 +43,14 @@ public class Fish : MonoBehaviour
         InitializeStatusBars();
         InvokeRepeating("UpdateHungerValue", 1.0f, 1.0f);
         InvokeRepeating("UpdateHappyValue", 1.0f, 1.0f);
-
+        InvokeRepeating("UpdateHealthValue", 1.0f, 1.0f);
+        InvokeRepeating("UpdateParasites", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateMetricText();
-
-        
-        //if(Mathf.RoundToInt(timer.GetTimePassed()) % 1 == 0)
-        //{
-        //    Debug.Log("Time Passed: " + Mathf.RoundToInt(timer.GetTimePassed()));  // TEST
-        //}
-
         UpdateStatusBars();
     }
 
@@ -63,6 +65,7 @@ public class Fish : MonoBehaviour
         hungerBar.maxValue = metrics.GetMaxMetric();
         hungerBar.value = metrics.GetHungerScore();
     }
+
 
     void UpdateMetricText()
     {
@@ -79,7 +82,7 @@ public class Fish : MonoBehaviour
     {
         if(metrics.GetHungerScore() > 0)
         {
-            metrics.SetHungerScore((float)-0.5f);
+            metrics.SetHungerScore((float)-(0.5f)); 
         }
         
     }
@@ -88,7 +91,32 @@ public class Fish : MonoBehaviour
     {
         if (metrics.GetHappyScore() > 0)
         {
-            metrics.SetHappyScore((float)-0.25f);
+            if (!parasitesPresent)
+            {
+                metrics.SetHappyScore((float)-(0.25f));
+            }
+            else
+            {
+                metrics.SetHappyScore((float)-(.5f));
+            }
+             
+        }
+
+    }
+
+    void UpdateHealthValue()
+    {
+        if (metrics.GetHealthScore() > 0)
+        {
+            if (!parasitesPresent)
+            {
+                metrics.SetHealthScore((float)-(4f * backgrounds.GetTankDirtyLevel()));
+            }
+            else
+            {
+                metrics.SetHealthScore((float)-(6f * backgrounds.GetTankDirtyLevel()));
+            }
+            
         }
 
     }
@@ -105,4 +133,19 @@ public class Fish : MonoBehaviour
         hungerBar.value = metrics.GetHungerScore();
     }
 
+    void UpdateParasites()
+    {
+        int r = Random.Range(0, 100);
+
+        Debug.Log("random is: " + r);
+
+        if (r == 0)  // If rand number is equal to 0, then parasites spawn
+        {
+            parasitesPresent = true;
+            parasites.gameObject.SetActive(true);
+            parasitesPresent = false;
+        } else
+        {
+        }
+    }
 }

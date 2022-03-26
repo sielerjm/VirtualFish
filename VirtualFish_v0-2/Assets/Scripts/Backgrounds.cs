@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Backgrounds : MonoBehaviour
 {
     public Image image;
-    [SerializeField] bool cleanTank = false;
     [SerializeField] float tankDirtyLevel = 0f;
 
     private void Awake()
@@ -40,7 +39,10 @@ public class Backgrounds : MonoBehaviour
 
     public void UpdateTankDirtyLevel()
     {
-        tankDirtyLevel += 0.005f;
+        if(tankDirtyLevel < .5f)
+        {
+            tankDirtyLevel += 0.005f;
+        }
     }
 
     void SetBackgroundColor()
