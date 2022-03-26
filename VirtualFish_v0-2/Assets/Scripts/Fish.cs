@@ -78,7 +78,7 @@ public class Fish : MonoBehaviour
         hungerScoreText.text = "Hunger: " + Mathf.RoundToInt(metrics.GetHungerScore());
 
         ageText.text = "" + timer.GetAge();
-        moneyText.text = "" + timer.GetMoney();
+        moneyText.text = "$" + timer.GetMoney();
 
         timerImage.fillAmount = timer.fillFraction;
     }
@@ -87,7 +87,7 @@ public class Fish : MonoBehaviour
     {
         if(metrics.GetHungerScore() > 0)
         {
-            metrics.SetHungerScore((float)-(0.5f)); 
+            metrics.SetHungerScore((float)-(1.5f)); 
         }
         
     }
@@ -98,11 +98,11 @@ public class Fish : MonoBehaviour
         {
             if (!parasitesPresent)
             {
-                metrics.SetHappyScore((float)-(0.25f));
+                metrics.SetHappyScore((float)-(1.25f));
             }
             else
             {
-                metrics.SetHappyScore((float)-(.5f));
+                metrics.SetHappyScore((float)-(1.5f));
             }
              
         }
@@ -140,7 +140,7 @@ public class Fish : MonoBehaviour
 
     void UpdateParasites()
     {
-        int r = Random.Range(0, 100);
+        int r = Random.Range(0, 66);
 
         Debug.Log("random is: " + r);
 
