@@ -15,7 +15,10 @@ public class Fish : MonoBehaviour
     [Header("Timer")]
     [SerializeField] Image timerImage;
     [SerializeField] TextMeshProUGUI ageText;
+    [SerializeField] TextMeshProUGUI moneyText;
+    int birthday = 0;
     Timer timer;
+
 
     [Header("ProgressBar")]
     [SerializeField] Slider healthBar;
@@ -52,6 +55,7 @@ public class Fish : MonoBehaviour
     {
         UpdateMetricText();
         UpdateStatusBars();
+        UpdateMoney();
     }
 
     void InitializeStatusBars()
@@ -74,6 +78,7 @@ public class Fish : MonoBehaviour
         hungerScoreText.text = "Hunger: " + Mathf.RoundToInt(metrics.GetHungerScore());
 
         ageText.text = "" + timer.GetAge();
+        moneyText.text = "" + timer.GetMoney();
 
         timerImage.fillAmount = timer.fillFraction;
     }
@@ -146,6 +151,21 @@ public class Fish : MonoBehaviour
             parasitesPresent = false;
         } else
         {
+            // Decrease health and happiness 
         }
     }
+
+    void UpdateMoney()
+    {
+        Debug.Log(Mathf.RoundToInt(timer.GetTimePassed() % 60));
+        if (birthday != timer.GetAge() & Mathf.RoundToInt(timer.GetTimePassed() % 60) == 0)
+        {
+            Debug.Log("Happy Birthday");
+            timer.SetMoney(50);
+            birthday += 1;
+        } else
+        {
+        }
+    }
+
 }
