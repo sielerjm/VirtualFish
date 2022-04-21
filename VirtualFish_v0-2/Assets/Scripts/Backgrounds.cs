@@ -11,10 +11,7 @@ public class Backgrounds : MonoBehaviour
 
     private void Awake()
     {
-        image = FindObjectOfType<Image>();
-        //var tempColor = image.color;
-        //tempColor.a = 0f;
-        //image.color = tempColor;
+        
     }
 
     private void Start()
