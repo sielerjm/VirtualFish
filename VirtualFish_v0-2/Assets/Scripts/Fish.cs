@@ -28,9 +28,13 @@ public class Fish : MonoBehaviour
     [Header("Backgrounds")]
     Backgrounds backgrounds;
 
-    [Header("Parasites")]
-    [SerializeField] bool parasitesPresent = false;
-    [SerializeField] Canvas parasites;
+    [Header("Pathogens")]
+    [SerializeField] bool bacteriaPresent = false;
+    [SerializeField] Canvas bacteria;
+    [SerializeField] bool virusPresent = false;
+    [SerializeField] Canvas virus;
+    [SerializeField] bool fungusPresent = false;
+    [SerializeField] Canvas fungus;
 
     private void Awake()
     {
@@ -96,7 +100,7 @@ public class Fish : MonoBehaviour
     {
         if (metrics.GetHappyScore() > 0)
         {
-            if (!parasitesPresent)
+            if (!bacteriaPresent || !virusPresent || !fungusPresent)
             {
                 metrics.SetHappyScore((float)-(.25f));
             }
@@ -113,7 +117,7 @@ public class Fish : MonoBehaviour
     {
         if (metrics.GetHealthScore() > 0)
         {
-            if (!parasitesPresent)
+            if (!bacteriaPresent || !virusPresent || !fungusPresent)
             {
                 metrics.SetHealthScore((float)-(2f * backgrounds.GetTankDirtyLevel()));
             }
@@ -141,18 +145,28 @@ public class Fish : MonoBehaviour
     void UpdateParasites()
     {
         // 1 in 60 chance of seeing parasites
-        int r = Random.Range(0, 60);
+        int r = Random.Range(0, 180);
 
         Debug.Log("random is: " + r);
 
         if (r == 0)  // If rand number is equal to 0, then parasites spawn
         {
-            parasitesPresent = true;
-            parasites.gameObject.SetActive(true);
-            parasitesPresent = false;
-        } else
+            bacteriaPresent = true;
+            bacteria.gameObject.SetActive(true);
+            bacteriaPresent = false;
+        } else if (r == 61)
         {
-            // Decrease health and happiness 
+            // Virus
+            virusPresent = true;
+            virus.gameObject.SetActive(true);
+            virusPresent = false;
+        }
+        else if (r == 121)
+        {
+            // Fungus
+            fungusPresent = true;
+            fungus.gameObject.SetActive(true);
+            fungusPresent = false;
         }
     }
 

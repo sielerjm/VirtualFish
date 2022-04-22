@@ -16,7 +16,7 @@ public class Backgrounds : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("UpdateTankDirtyLevel", 1.0f, 1.0f);
+        InvokeRepeating("UpdateTankDirtyLevel", 1.0f, 1.0f);  // Updates Dirty tank opacity
     }
 
     private void Update()

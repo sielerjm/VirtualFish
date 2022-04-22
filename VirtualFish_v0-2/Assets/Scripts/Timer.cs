@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 
     int age = 0;
     int money = 50;
+    [SerializeField] bool panelOpen = false;
     public float fillFraction;
     [SerializeField] float timePassed = 0f;
 
@@ -33,8 +34,13 @@ public class Timer : MonoBehaviour
 
     void UpdateTimer()
     {
-        timePassed += Time.deltaTime;
-        fillFraction = (timePassed % 60) / 60;
+        if (!panelOpen)
+        {
+            timePassed += Time.deltaTime;
+            fillFraction = (timePassed % 60) / 60;
+        }
+        //timePassed += Time.deltaTime;
+        //fillFraction = (timePassed % 60) / 60;
     }
 
     public float GetTimePassed()
