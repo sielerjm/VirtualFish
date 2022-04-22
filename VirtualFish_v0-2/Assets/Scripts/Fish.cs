@@ -35,6 +35,8 @@ public class Fish : MonoBehaviour
     [SerializeField] Canvas virus;
     [SerializeField] bool fungusPresent = false;
     [SerializeField] Canvas fungus;
+    [SerializeField] bool algaePresent = false;
+    [SerializeField] Canvas algae;
 
     private void Awake()
     {
@@ -145,7 +147,7 @@ public class Fish : MonoBehaviour
     void UpdateParasites()
     {
         // 1 in 60 chance of seeing parasites
-        int r = Random.Range(0, 180);
+        int r = Random.Range(0, 240);
 
         Debug.Log("random is: " + r);
 
@@ -161,12 +163,19 @@ public class Fish : MonoBehaviour
             virus.gameObject.SetActive(true);
             virusPresent = false;
         }
-        else if (r == 121)
+        else if (r == 120)
         {
             // Fungus
             fungusPresent = true;
             fungus.gameObject.SetActive(true);
             fungusPresent = false;
+        }
+        else if (r == 180)
+        {
+            // Fungus
+            algaePresent = true;
+            algae.gameObject.SetActive(true);
+            algaePresent = false;
         }
     }
 
