@@ -39,8 +39,7 @@ public class Timer : MonoBehaviour
             timePassed += Time.deltaTime;
             fillFraction = (timePassed % 60) / 60;
         }
-        //timePassed += Time.deltaTime;
-        //fillFraction = (timePassed % 60) / 60;
+
     }
 
     public float GetTimePassed()
