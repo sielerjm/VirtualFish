@@ -16,6 +16,7 @@ public class Fish : MonoBehaviour
     [SerializeField] Image timerImage;
     [SerializeField] TextMeshProUGUI ageText;
     [SerializeField] TextMeshProUGUI moneyText;
+    //[SerializeField] public bool panelOpen = false;
     int birthday = 0;
     Timer timer;
 
@@ -91,57 +92,71 @@ public class Fish : MonoBehaviour
 
     void UpdateMetricText()
     {
-        healthScoreText.text = "Health: " + Mathf.RoundToInt(metrics.GetHealthScore()); //+ "%";
-        happyScoreText.text = "Happy: " + Mathf.RoundToInt(metrics.GetHappyScore());
-        hungerScoreText.text = "Hunger: " + Mathf.RoundToInt(metrics.GetHungerScore());
+        //if (!timer.GetPanelOpen())
+        //{
+            healthScoreText.text = "Health: " + Mathf.RoundToInt(metrics.GetHealthScore()); //+ "%";
+            happyScoreText.text = "Happy: " + Mathf.RoundToInt(metrics.GetHappyScore());
+            hungerScoreText.text = "Hunger: " + Mathf.RoundToInt(metrics.GetHungerScore());
 
-        ageText.text = "" + timer.GetAge();
-        moneyText.text = "$" + timer.GetMoney();
+            ageText.text = "" + timer.GetAge();
+            moneyText.text = "$" + timer.GetMoney();
 
-        timerImage.fillAmount = timer.fillFraction;
+            timerImage.fillAmount = timer.fillFraction;
+        //}
+
     }
 
     void UpdateHungerValue()
     {
-        if(metrics.GetHungerScore() > 0)
+        if (!timer.GetPanelOpen())
         {
-            metrics.SetHungerScore((float)-(.5f)); 
+            if (metrics.GetHungerScore() > 0)
+            {
+                metrics.SetHungerScore((float)-(.5f));
+            }
         }
-        
+
     }
 
     void UpdateHappyValue()
     {
-        if (metrics.GetHappyScore() > 0)
+        if(!timer.GetPanelOpen())
         {
-            if (!bacteriaPresent || !virusPresent || !fungusPresent || !algaePresent)
+            if (metrics.GetHappyScore() > 0)
             {
-                metrics.SetHappyScore((float)-(.25f));
+                if (!bacteriaPresent || !virusPresent || !fungusPresent || !algaePresent)
+                {
+                    metrics.SetHappyScore((float)-(.25f));
+                }
+                else
+                {
+                    metrics.SetHappyScore((float)-(.5f));
+                }
+
             }
-            else
-            {
-                metrics.SetHappyScore((float)-(.5f));
-            }
-             
         }
+        
 
     }
 
     void UpdateHealthValue()
     {
-        if (metrics.GetHealthScore() > 0)
+        if (!timer.GetPanelOpen())
         {
-            if (!bacteriaPresent || !virusPresent || !fungusPresent || !algaePresent)
+            if (metrics.GetHealthScore() > 0)
             {
-                metrics.SetHealthScore((float)-(2f * backgrounds.GetTankDirtyLevel()));
-            }
-            else
-            {
-                metrics.SetHealthScore((float)-(3f * backgrounds.GetTankDirtyLevel()));
-            }
-            
-        }
+                if (!bacteriaPresent || !virusPresent || !fungusPresent || !algaePresent)
+                {
+                    metrics.SetHealthScore((float)-(2f * backgrounds.GetTankDirtyLevel()));
+                }
+                else
+                {
+                    metrics.SetHealthScore((float)-(3f * backgrounds.GetTankDirtyLevel()));
+                }
 
+            }
+        }
+          
     }
 
     void UpdateStatusBars()
@@ -161,37 +176,42 @@ public class Fish : MonoBehaviour
 
     void UpdateParasites()
     {
-        // 1 in 60 chance of seeing parasites
-        int r = Random.Range(0, 240);
+        if (!timer.GetPanelOpen())
+        {
+            // 1 in 60 chance of seeing parasites
+            int r = Random.Range(0, 240);
 
-        //Debug.Log("random is: " + r);
+            //Debug.Log("random is: " + r);
 
-        if (r == 0)  // If rand number is equal to 0, then parasites spawn
-        {
-            bacteriaPresent = true;
-            bacteria.gameObject.SetActive(true);
-            bacteriaPresent = false;
-        } else if (r == 61)
-        {
-            // Virus
-            virusPresent = true;
-            virus.gameObject.SetActive(true);
-            virusPresent = false;
+            if (r == 0)  // If rand number is equal to 0, then parasites spawn
+            {
+                bacteriaPresent = true;
+                bacteria.gameObject.SetActive(true);
+                bacteriaPresent = false;
+            }
+            else if (r == 61)
+            {
+                // Virus
+                virusPresent = true;
+                virus.gameObject.SetActive(true);
+                virusPresent = false;
+            }
+            else if (r == 120)
+            {
+                // Fungus
+                fungusPresent = true;
+                fungus.gameObject.SetActive(true);
+                fungusPresent = false;
+            }
+            else if (r == 180)
+            {
+                // Algae
+                algaePresent = true;
+                algae.gameObject.SetActive(true);
+                algaePresent = false;
+            }
         }
-        else if (r == 120)
-        {
-            // Fungus
-            fungusPresent = true;
-            fungus.gameObject.SetActive(true);
-            fungusPresent = false;
-        }
-        else if (r == 180)
-        {
-            // Algae
-            algaePresent = true;
-            algae.gameObject.SetActive(true);
-            algaePresent = false;
-        }
+        
     }
 
     void UpdateMoney()

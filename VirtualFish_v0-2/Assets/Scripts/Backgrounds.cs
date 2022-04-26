@@ -8,15 +8,20 @@ public class Backgrounds : MonoBehaviour
 {
     public Image image;
     [SerializeField] float tankDirtyLevel = 0f;
+    Timer timer;
 
     private void Awake()
     {
-        
+        timer = FindObjectOfType<Timer>();
     }
 
     private void Start()
     {
-        InvokeRepeating("UpdateTankDirtyLevel", 1.0f, 1.0f);  // Updates Dirty tank opacity
+        if (!timer.GetPanelOpen())
+        {
+            InvokeRepeating("UpdateTankDirtyLevel", 1.0f, 1.0f);  // Updates Dirty tank opacity
+        }
+            
     }
 
     private void Update()

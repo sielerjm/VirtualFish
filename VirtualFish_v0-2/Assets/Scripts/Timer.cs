@@ -11,15 +11,23 @@ public class Timer : MonoBehaviour
     public float fillFraction;
     [SerializeField] float timePassed = 0f;
 
+    CheckPanels checkPanels;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
+    private void Awake()
+    {
+        checkPanels = FindObjectOfType<CheckPanels>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        SetPanelOpen();
         UpdateTimer();
 
         //Debug.Log(Mathf.RoundToInt(timePassed % 60)); // TEST
@@ -65,6 +73,16 @@ public class Timer : MonoBehaviour
     public int GetMoney()
     {
         return money;
+    }
+
+    public void SetPanelOpen()
+    {
+        panelOpen = checkPanels.CheckPanelsOpen();
+    }
+
+    public bool GetPanelOpen()
+    {
+        return panelOpen;
     }
 
 }
