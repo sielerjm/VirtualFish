@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fish.gameObject.SetActive(true);
+        //fish.gameObject.SetActive(true);
     }
 
     private void Awake()
@@ -24,9 +24,19 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void OnReplayLevel()
+    public void ReplayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Pressing Replay Game");
+        PlayerPrefs.SetInt("Score", 0);
+        SceneManager.LoadScene("Main");
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("EndGame");
     }
 
 

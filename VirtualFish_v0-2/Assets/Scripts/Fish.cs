@@ -22,8 +22,12 @@ public class Fish : MonoBehaviour
 
     [Header("ProgressBar")]
     [SerializeField] Slider healthBar;
+    [SerializeField] Image healthBarFill;
     [SerializeField] Slider happyBar;
+    [SerializeField] Image happyBarFill;
     [SerializeField] Slider hungerBar;
+    [SerializeField] Image hungerBarFill;
+
 
     [Header("Backgrounds")]
     Backgrounds backgrounds;
@@ -38,12 +42,13 @@ public class Fish : MonoBehaviour
     [SerializeField] bool algaePresent = false;
     [SerializeField] Canvas algae;
 
+
     private void Awake()
     {
         timer = FindObjectOfType<Timer>();
         metrics = FindObjectOfType<Metrics>();
         backgrounds = FindObjectOfType<Backgrounds>();
-        
+
     }
 
     // Start is called before the first frame update
@@ -54,6 +59,8 @@ public class Fish : MonoBehaviour
         InvokeRepeating("UpdateHappyValue", 1.0f, 1.0f);
         InvokeRepeating("UpdateHealthValue", 1.0f, 1.0f);
         InvokeRepeating("UpdateParasites", 1.0f, 1.0f);
+
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     // Update is called once per frame
@@ -62,6 +69,11 @@ public class Fish : MonoBehaviour
         UpdateMetricText();
         UpdateStatusBars();
         UpdateMoney();
+        PlayerPrefs.SetInt("Score", timer.GetAge());
+
+        //lerpSpeed = 3f * Time.deltaTime;
+        //HealthBarFiller();
+        //ColorChanger();
     }
 
     void InitializeStatusBars()
@@ -102,7 +114,7 @@ public class Fish : MonoBehaviour
     {
         if (metrics.GetHappyScore() > 0)
         {
-            if (!bacteriaPresent || !virusPresent || !fungusPresent)
+            if (!bacteriaPresent || !virusPresent || !fungusPresent || !algaePresent)
             {
                 metrics.SetHappyScore((float)-(.25f));
             }
@@ -119,7 +131,7 @@ public class Fish : MonoBehaviour
     {
         if (metrics.GetHealthScore() > 0)
         {
-            if (!bacteriaPresent || !virusPresent || !fungusPresent)
+            if (!bacteriaPresent || !virusPresent || !fungusPresent || !algaePresent)
             {
                 metrics.SetHealthScore((float)-(2f * backgrounds.GetTankDirtyLevel()));
             }
@@ -136,12 +148,15 @@ public class Fish : MonoBehaviour
     {
         //healthBar.maxValue = metrics.GetMaxMetric();
         healthBar.value = metrics.GetHealthScore();
+        healthBarFill.color = Color.Lerp(Color.red, Color.green, (healthBar.value/100));
 
         //happyBar.maxValue = metrics.GetMaxMetric();
         happyBar.value = metrics.GetHappyScore();
+        happyBarFill.color = Color.Lerp(Color.red, Color.green, (happyBar.value / 100));
 
         //hungerBar.maxValue = metrics.GetMaxMetric();
         hungerBar.value = metrics.GetHungerScore();
+        hungerBarFill.color = Color.Lerp(Color.red, Color.green, (hungerBar.value / 100));
     }
 
     void UpdateParasites()
@@ -149,7 +164,7 @@ public class Fish : MonoBehaviour
         // 1 in 60 chance of seeing parasites
         int r = Random.Range(0, 240);
 
-        Debug.Log("random is: " + r);
+        //Debug.Log("random is: " + r);
 
         if (r == 0)  // If rand number is equal to 0, then parasites spawn
         {
@@ -172,7 +187,7 @@ public class Fish : MonoBehaviour
         }
         else if (r == 180)
         {
-            // Fungus
+            // Algae
             algaePresent = true;
             algae.gameObject.SetActive(true);
             algaePresent = false;
@@ -186,9 +201,14 @@ public class Fish : MonoBehaviour
             Debug.Log("Happy Birthday");
             timer.SetMoney(50);
             birthday += 1;
+            
         } else
         {
         }
     }
+
+
+
+
 
 }
