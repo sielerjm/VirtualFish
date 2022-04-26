@@ -17,7 +17,7 @@ public class Backgrounds : MonoBehaviour
 
     private void Start()
     {
-        if (!timer.GetPanelOpen())
+        if (timer.GetPanelOpen())
         {
             InvokeRepeating("UpdateTankDirtyLevel", 1.0f, 1.0f);  // Updates Dirty tank opacity
         }

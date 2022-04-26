@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetPanelOpen();
+        panelOpen = checkPanels.CheckPanelsOpen();
         UpdateTimer();
 
         //Debug.Log(Mathf.RoundToInt(timePassed % 60)); // TEST
@@ -75,9 +75,9 @@ public class Timer : MonoBehaviour
         return money;
     }
 
-    public void SetPanelOpen()
+    public void SetPanelOpen(bool value)
     {
-        panelOpen = checkPanels.CheckPanelsOpen();
+        panelOpen = value;
     }
 
     public bool GetPanelOpen()
