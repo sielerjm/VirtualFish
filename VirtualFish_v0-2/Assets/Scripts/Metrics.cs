@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Metrics : MonoBehaviour
 {
-    float healthScore = 100;
-    float happyScore = 100;
-    float hungerScore = 100;
-    float maxMetric = 100;
+    [SerializeField] float healthScore = 100;
+    [SerializeField] float happyScore = 100;
+    [SerializeField] float hungerScore = 100;
+    [SerializeField] float maxMetric = 100;
 
     public float GetHealthScore()
     {

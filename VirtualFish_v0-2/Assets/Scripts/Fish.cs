@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Fish : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class Fish : MonoBehaviour
     [SerializeField] bool algaePresent = false;
     [SerializeField] Canvas algae;
 
+    [Header("Fish")]
+    //bool isAlive = true;
+    Animator myAnimator;
+
 
     private void Awake()
     {
@@ -62,6 +67,8 @@ public class Fish : MonoBehaviour
         InvokeRepeating("UpdateParasites", 1.0f, 1.0f);
 
         PlayerPrefs.SetInt("Score", 0);
+
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,6 +78,8 @@ public class Fish : MonoBehaviour
         UpdateStatusBars();
         UpdateMoney();
         PlayerPrefs.SetInt("Score", timer.GetAge());
+
+        Die();
 
         //lerpSpeed = 3f * Time.deltaTime;
         //HealthBarFiller();
@@ -228,7 +237,16 @@ public class Fish : MonoBehaviour
     }
 
 
-
+    void Die()
+    {
+        if(metrics.GetHealthScore() <= 0)
+        {
+            //isAlive = false;
+            Debug.Log("Dead!");
+            //myAnimator.SetTrigger("Dead");
+            SceneManager.LoadScene("EndGame");
+        }
+    }
 
 
 }
