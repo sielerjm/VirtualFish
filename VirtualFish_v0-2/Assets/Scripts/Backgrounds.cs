@@ -41,10 +41,14 @@ public class Backgrounds : MonoBehaviour
 
     public void UpdateTankDirtyLevel()
     {
-        if(tankDirtyLevel < .5f)
+        if (!timer.GetPanelOpen())
         {
-            tankDirtyLevel += 0.005f;
+            if (tankDirtyLevel < .5f)
+            {
+                tankDirtyLevel += 0.005f;
+            }
         }
+        
     }
 
     void SetBackgroundColor()
