@@ -11717,8 +11717,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2020454903}
-  - {fileID: 374007633}
   - {fileID: 1162801807}
+  - {fileID: 374007633}
   - {fileID: 170546144}
   - {fileID: 1839320475}
   - {fileID: 1073389023}
@@ -13041,6 +13041,7 @@ MonoBehaviour:
   fungus: {fileID: 413274639}
   algaePresent: 0
   algae: {fileID: 1815263845}
+  pathogenWarning: {fileID: 1965444838}
 --- !u!1 &1501128936
 GameObject:
   m_ObjectHideFlags: 0
@@ -16654,6 +16655,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1965444838 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2825512000581030846, guid: f107b7965dc2b4315bfce2e5397c87b4, type: 3}
+  m_PrefabInstance: {fileID: 153642307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1995810084
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,9 @@ public class Fish : MonoBehaviour
     //bool isAlive = true;
     Animator myAnimator;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource pathogenWarning;
+
 
     private void Awake()
     {
@@ -195,28 +198,36 @@ public class Fish : MonoBehaviour
             if (r == 0)  // If rand number is equal to 0, then parasites spawn
             {
                 bacteriaPresent = true;
+                Debug.Log("Bacteria are present");
                 bacteria.gameObject.SetActive(true);
+                pathogenWarning.Play();
                 bacteriaPresent = false;
             }
             else if (r == 61)
             {
                 // Virus
                 virusPresent = true;
+                Debug.Log("Virus are present");
                 virus.gameObject.SetActive(true);
+                pathogenWarning.Play();
                 virusPresent = false;
             }
             else if (r == 120)
             {
                 // Fungus
                 fungusPresent = true;
+                Debug.Log("Fungus are present");
                 fungus.gameObject.SetActive(true);
+                pathogenWarning.Play();
                 fungusPresent = false;
             }
             else if (r == 180)
             {
                 // Algae
                 algaePresent = true;
+                Debug.Log("Algae are present");
                 algae.gameObject.SetActive(true);
+                pathogenWarning.Play();
                 algaePresent = false;
             }
         }
