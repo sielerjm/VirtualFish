@@ -9,6 +9,7 @@ public class Metrics : MonoBehaviour
     [SerializeField] float hungerScore = 100;
     [SerializeField] float maxMetric = 100;
 
+
     public float GetHealthScore()
     {
         return healthScore;
