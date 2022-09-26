@@ -52,8 +52,8 @@ public class Medicine : MonoBehaviour
     {
         Debug.Log("Medication button was pressed");
 
-        if (!cooldown.GetIsCooldown())
-        {
+        //if (!cooldown.GetIsCooldown())
+        //{
 
             Debug.Log("No Cooldown in medicine.cs");
 
@@ -89,7 +89,7 @@ public class Medicine : MonoBehaviour
             }
 
 
-        }
+        //}
         //Metrics.GetComponent<Metrics>().SetHealthScore(healthValue);
         //Metrics.GetComponent<Metrics>().SetHungerScore(happyValue);
         //Metrics.GetComponent<Metrics>().SetHealthScore(hungerValue);

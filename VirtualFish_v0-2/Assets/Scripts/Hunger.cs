@@ -10,7 +10,7 @@ public class Hunger : MonoBehaviour
     [SerializeField] float hungerValue = 1f;
 
     [SerializeField] GameObject Metrics;
-    Cooldown cooldown;
+    //Cooldown cooldown;
 
 
     // Start is called before the first frame update
