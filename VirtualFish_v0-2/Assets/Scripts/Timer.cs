@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField] bool panelOpen = false;
     public float fillFraction;
     [SerializeField] float timePassed = 0f;
+    [SerializeField] float timeMultiplier = 1f;
 
     CheckPanels checkPanels;
 
@@ -44,13 +45,18 @@ public class Timer : MonoBehaviour
     {
         if (!panelOpen)
         {
-            timePassed += Time.deltaTime;
+            timePassed += (Time.deltaTime * timeMultiplier);
             fillFraction = (timePassed % 60) / 60;
         }
 
     }
 
     public float GetTimePassed()
+    {
+        return Mathf.RoundToInt(timePassed);
+    }
+
+    public float GetTimePassedFloat()
     {
         return Mathf.RoundToInt(timePassed);
     }

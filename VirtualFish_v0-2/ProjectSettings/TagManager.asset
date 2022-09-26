@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Popup
-  - 
+  - Effects
   - 
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Fish
     uniqueID: 2736390293
+    locked: 0
+  - name: Effects
+    uniqueID: 1592915123
     locked: 0
