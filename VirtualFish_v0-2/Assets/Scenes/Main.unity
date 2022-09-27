@@ -16573,7 +16573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659941544
@@ -16596,7 +16596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '| |'
+  m_text: "...\x03"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0248de58abc144d6dab4a7179b8e378d, type: 2}
   m_sharedMaterial: {fileID: -6687640789405695164, guid: 0248de58abc144d6dab4a7179b8e378d, type: 2}
@@ -17208,11 +17208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17306fa8d8543469eadbb26f2855cb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 10
+  healthValue: 15
   happyValue: 5
   hungerValue: 0
-  decreaseHealthValue: -25
-  decreaseHappyValue: -25
+  decreaseHealthValue: -15
+  decreaseHappyValue: -10
   decreaseHungerValue: 0
   Metrics: {fileID: 803726057}
   Pathogens: {fileID: 104031321}
@@ -28837,11 +28837,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17306fa8d8543469eadbb26f2855cb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 10
+  healthValue: 15
   happyValue: 5
   hungerValue: 0
-  decreaseHealthValue: -25
-  decreaseHappyValue: -25
+  decreaseHealthValue: -15
+  decreaseHappyValue: -10
   decreaseHungerValue: 0
   Metrics: {fileID: 803726057}
   Pathogens: {fileID: 104031321}
@@ -52397,8 +52397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba385ad882a7b4b08a9f1ad6ac43d517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: -5
-  happyValue: 10
+  healthValue: -2.5
+  happyValue: 15
   hungerValue: -2.5
   Metrics: {fileID: 803726057}
 --- !u!114 &1440238922
@@ -59665,11 +59665,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17306fa8d8543469eadbb26f2855cb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 10
+  healthValue: 15
   happyValue: 5
   hungerValue: 0
-  decreaseHealthValue: -25
-  decreaseHappyValue: -25
+  decreaseHealthValue: -15
+  decreaseHappyValue: -10
   decreaseHungerValue: 0
   Metrics: {fileID: 803726057}
   Pathogens: {fileID: 104031321}
@@ -66581,9 +66581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba385ad882a7b4b08a9f1ad6ac43d517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 5
-  happyValue: 5
-  hungerValue: -20
+  healthValue: 10
+  happyValue: 10
+  hungerValue: -15
   Metrics: {fileID: 803726057}
 --- !u!114 &1966361578
 MonoBehaviour:
@@ -67022,10 +67022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17306fa8d8543469eadbb26f2855cb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 10
+  healthValue: 15
   happyValue: 5
   hungerValue: 0
-  decreaseHealthValue: -10
+  decreaseHealthValue: -5
   decreaseHappyValue: -25
   decreaseHungerValue: 0
   Metrics: {fileID: 803726057}

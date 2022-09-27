@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
 
     int age = 0;
-    int money = 50;
+    //int money = 50;
     [SerializeField] bool panelOpen = false;
     public float fillFraction;
     [SerializeField] float timePassed = 0f;
@@ -71,15 +71,15 @@ public class Timer : MonoBehaviour
         return age;
     }
 
-    public void SetMoney(int value)
-    {
-        money += value;
-    }
+    //public void SetMoney(int value)
+    //{
+    //    money += value;
+    //}
 
-    public int GetMoney()
-    {
-        return money;
-    }
+    //public int GetMoney()
+    //{
+    //    return money;
+    //}
 
     public void SetPanelOpen(bool value)
     {

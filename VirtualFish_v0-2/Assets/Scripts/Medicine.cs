@@ -11,6 +11,8 @@ public class Medicine : MonoBehaviour
     [SerializeField] float healthValue = 10f;
     [SerializeField] float happyValue = 5f;
     [SerializeField] float hungerValue = 0f;
+
+    [Header("Consequences")]
     [SerializeField] float decreaseHealthValue = -5f;
     [SerializeField] float decreaseHappyValue = -5f;
     [SerializeField] float decreaseHungerValue = -5f;

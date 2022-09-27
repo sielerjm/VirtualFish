@@ -11,11 +11,11 @@ public class Fish : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthScoreText;
     [SerializeField] TextMeshProUGUI happyScoreText;
     [SerializeField] TextMeshProUGUI hungerScoreText;
-    [SerializeField] float incrementHealth = 1f;
+    [SerializeField] float incrementHealth = 2f;
     [SerializeField] float incHealthMultiplier = 1.0f;
-    [SerializeField] float incrementHappy = 1f;
+    [SerializeField] float incrementHappy = 2f;
     [SerializeField] float incHappyMultiplier = 1.0f;
-    [SerializeField] float incrementHunger = 1f;
+    [SerializeField] float incrementHunger = 2f;
     [SerializeField] float incHungerMultiplier = 1.0f;
     Metrics metrics;
 
@@ -89,7 +89,7 @@ public class Fish : MonoBehaviour
     {
         UpdateMetricText();
         UpdateStatusBars();
-        UpdateMoney();
+        UpdateAge();
         PlayerPrefs.SetInt("Score", timer.GetAge());
 
         Die();
@@ -121,7 +121,7 @@ public class Fish : MonoBehaviour
             hungerScoreText.text = "Hunger: " + Mathf.RoundToInt(metrics.GetHungerScore());
 
             ageText.text = "" + timer.GetAge();
-            moneyText.text = "$" + timer.GetMoney();
+            //moneyText.text = "$" + timer.GetMoney();
 
             timerImage.fillAmount = timer.fillFraction;
         //}
@@ -172,11 +172,11 @@ public class Fish : MonoBehaviour
                 if (!Pathogens.GetComponent<Pathogens>().GetPathogenStatus(0) || !Pathogens.GetComponent<Pathogens>().GetPathogenStatus(1)
                     || !Pathogens.GetComponent<Pathogens>().GetPathogenStatus(2) || !Pathogens.GetComponent<Pathogens>().GetPathogenStatus(3))
                 {
-                    metrics.SetHealthScore((float)-(incrementHealth * incHealthMultiplier * backgrounds.GetTankDirtyLevel()));
+                    metrics.SetHealthScore((float)-(incrementHealth * incHealthMultiplier + backgrounds.GetTankDirtyLevel()));
                 }
                 else
                 {
-                    metrics.SetHealthScore((float)-(incrementHealth * incHealthMultiplier * backgrounds.GetTankDirtyLevel()));
+                    metrics.SetHealthScore((float)-(incrementHealth * incHealthMultiplier + backgrounds.GetTankDirtyLevel()) * 2);
                 }
 
             }
@@ -272,12 +272,12 @@ public class Fish : MonoBehaviour
         
     //}
 
-    void UpdateMoney()
+    void UpdateAge()
     {
         if (birthday != timer.GetAge() & Mathf.RoundToInt(timer.GetTimePassed() % 60) == 0)
         {
             Debug.Log("Happy Birthday");
-            timer.SetMoney(50);
+            //timer.SetMoney(50);
             birthday += 1;
             
         } else
