@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class CheckPanels : MonoBehaviour
 {
     //[Header("Canvases")]  // Could be better as a list of canvases
-    [SerializeField] GameObject foodCanvas;
-    [SerializeField] GameObject tankCanvas;
-    [SerializeField] GameObject careCanvas;
+    //[SerializeField] GameObject foodCanvas;
+    //[SerializeField] GameObject tankCanvas;
+    //[SerializeField] GameObject careCanvas;
     [SerializeField] GameObject learnCanvas;
     [SerializeField] GameObject instructionCanvas;
 
@@ -26,9 +26,8 @@ public class CheckPanels : MonoBehaviour
 
     public bool CheckPanelsOpen()
     {
-        if (foodCanvas.activeSelf || tankCanvas.activeSelf ||
-            careCanvas.activeSelf || learnCanvas.activeSelf ||
-            instructionCanvas.activeSelf)
+        if (//foodCanvas.activeSelf || tankCanvas.activeSelf || careCanvas.activeSelf ||
+            learnCanvas.activeSelf || instructionCanvas.activeSelf)
         {
             return true;  // Returns false if none are active
         }
