@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Hunger : MonoBehaviour
+public class TankCare : MonoBehaviour
 {
     [Header("Metrics")]
     [SerializeField] float healthValue = 1f;
@@ -11,10 +12,12 @@ public class Hunger : MonoBehaviour
 
     [Header("Consequences")]
     [SerializeField] float decreaseHealthValue = -5f;
-    [SerializeField] float decreaseHappyValue = 5f;
-    [SerializeField] float decreaseHungerValue = -15f;
+    [SerializeField] float decreaseHappyValue = -5f;
+    [SerializeField] float decreaseHungerValue = 0f;
 
     [SerializeField] GameObject Metrics;
+    [SerializeField] GameObject Backgrounds;
+    //Backgrounds backgrounds;
     //Cooldown cooldown;
 
 
@@ -34,8 +37,9 @@ public class Hunger : MonoBehaviour
 
     public void UpdateMetrics()
     {
-        
-        if ((Metrics.GetComponent<Metrics>().GetHungerScore() + hungerValue) > hungerValue)
+        Debug.Log("Tank Dirty Level: "+ Backgrounds.GetComponent<Backgrounds>().GetTankDirtyLevel());
+
+        if ((Backgrounds.GetComponent<Backgrounds>().GetTankDirtyLevel()) > 0.01f)
         {
             Debug.Log("Update health: " + healthValue +
                     " Update happy: " + happyValue +
@@ -44,9 +48,10 @@ public class Hunger : MonoBehaviour
             Metrics.GetComponent<Metrics>().SetHealthScore(healthValue);
             Metrics.GetComponent<Metrics>().SetHappyScore(happyValue);
             Metrics.GetComponent<Metrics>().SetHungerScore(hungerValue);
-        } else
+        }
+        else
         {
-            Debug.Log("Overfeeding!");
+            Debug.Log("Overcleaning!");
             Debug.Log("Update health: " + decreaseHealthValue +
                     " Update happy: " + decreaseHappyValue +
                     " Update hunger: " + decreaseHungerValue);
@@ -59,6 +64,4 @@ public class Hunger : MonoBehaviour
         //Metrics.GetComponent<Metrics>().SetHungerScore(happyValue);
         //Metrics.GetComponent<Metrics>().SetHealthScore(hungerValue);
     }
-
-
 }

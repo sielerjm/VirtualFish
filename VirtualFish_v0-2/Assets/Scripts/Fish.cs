@@ -154,7 +154,7 @@ public class Fish : MonoBehaviour
                 }
                 else
                 {
-                    metrics.SetHappyScore((float)-(incrementHappy * incHappyMultiplier));
+                    metrics.SetHappyScore((float)-(2 * incrementHappy * incHappyMultiplier));
                 }
 
             }
@@ -176,7 +176,7 @@ public class Fish : MonoBehaviour
                 }
                 else
                 {
-                    metrics.SetHealthScore((float)-(incrementHealth * incHealthMultiplier + backgrounds.GetTankDirtyLevel()) * 2);
+                    metrics.SetHealthScore((float)-(2 * incrementHealth * incHealthMultiplier + backgrounds.GetTankDirtyLevel()));
                 }
 
             }
